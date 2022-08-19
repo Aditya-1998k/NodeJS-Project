@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>
+            table{
+                width: 100%;
+            }
+            td,th{
+                border:2px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <h1>Dummy Users are Here</h1>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>City</th>
+                    <th>Age</th>
+                    <th>Profession</th>
+                </tr>
+                <!--for loop for multiple data-->
+                <% for(let i=0; i<user.length;i++) {%>
+                    <tr>
+                        <td><%= user[i].fullname %></td>
+                        <td><%= user[i].email %></td>
+                        <td><%= user[i].city %></td>
+                        <td><%= user[i].age %></td>
+                        <td><%= user[i].profession %></td>
+                    </tr>
+                <% } %>
+            </table>
+            <a href="/form" >Add User</a>
+        </div>
+    </body>
+</html>

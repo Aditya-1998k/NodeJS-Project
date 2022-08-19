@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <style>
+            h1{
+                background-color:greenyellow;
+                height: 50px;
+                text-align:center;
+            }
+            .userdata{
+                border: 2px solid black;
+                padding: 2px;
+                margin: 2px;
+                height:90px;
+                border-radius: 5px;
+            }
+            .email{
+                margin-top:7px;
+            }
+            .name{margin-top: 7px;}
+            a{
+                text-decoration:none;
+                margin:5px;
+            }
+            button{
+                border:5px solid black;
+                border-radius: 5px;
+                margin-top:10px;
+            }
+            .primary{
+                color:white;
+                background-color:green;
+            }
+            .secondary{
+                background-color:yellow;
+                color:blue;
+            }
+            .danger{
+                background-color:red;
+                color:white;
+            }
+            .first{
+                width:200px;
+                display: block;
+                float: left;
+            }
+            .button{
+                margin-left:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Play With User Data</h1>
+        <div>
+            <% for(let i=0; i<user.length;i++) {%>
+                <div class="userdata <%= getClass(user[i].isPromoted)%>">
+                    <div class=" name <%= getClass(user[i].isPromoted)%>" ><%= user[i].name %></div>
+                    <div class="email <%= getClass(user[i].isPromoted)%>"><%= user[i].email %></div>
+
+                    <!--install packeage override to use put and delete in form because it support post and get only-->
+                    <!--npm install method-override-->
+                    <span class="first">
+                    <form method="POST" action="/user/update/<%= user[i].email %>?_method=PUT" name="_method" value="PUT">
+                        <button class="<%= getClass(user[i].isPromoted)%>" id="edit-<%= user[i].name %>" type="submit">Promoted/Demoted</button>
+                    </form> 
+                    </span>
+                    <span class="first">
+                    <form method="POST" action="/user/delete/<%= user[i].email %>?_method=Delete" name="_method" value="PUT">
+                        <button class="<%= getClass(user[i].isPromoted)%>" id="edit-<%= user[i].name %>" type="submit" >Delete</button>
+                    </form> 
+                    </span>
+                </div>
+            <% } %>
+                
+        </div>
+        <div >
+        <button ><a href="/form">Add User</a></button>
+        </div>
+        </body>
+    </body>
+</html>
